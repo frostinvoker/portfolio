@@ -1,19 +1,24 @@
 [PLANS]
-- 2026-10-18T11:48Z [USER] Add the supplied React Bits Particles as a landing screen; scrolling zooms and blurs into the existing portfolio. Preserve existing design and colors.
+- 2026-10-18T14:08Z [USER] Implement project responsiveness. Completed layout, content sizing, browser checks, and production verification; preserve existing design and landing behavior.
 
 [DECISIONS]
+- 2026-10-18T14:08Z [CODE] Use a 100dvh shell with navigation above one main scroll area. Stack profile/content below 1024px; desktop grid is 1:2, with sticky profile only at heights >=704px. Short windows scroll the card. Keep existing colors, fonts, copy, particles, and reveals.
 - 2026-10-18T11:48Z [CODE] Keep existing portfolio sections and nested scroll area; wrap the layout with a client transition. Use existing CSS colors and fonts, native scrolling, and no new dependencies.
 
 [PROGRESS]
+- 2026-10-18T14:08Z [CODE] Added app/layout.module.css; fluid headings, mobile project stacks, auto-fit tool grids, nonshrinking icons, proportional profile image, wrapping socials, 44px navigation/submit targets, and fitting 16px form controls with keyboard focus. README documents behavior.
 - 2026-10-18T11:48Z [TOOL] Read supplied component and local Next.js 16.3.4 client-component/CSS guides. Copied supplied TSX and CSS into components/Particles.*.
 - 2026-10-18T11:51Z [CODE] Implemented landingTransition.tsx/CSS with one viewport of native scroll, reversible zoom/blur, keyboard entry/focus, inactive hidden controls, reduced-motion fade, and direct portfolio fallback without JavaScript. Moved original layout classes to a viewport shell; kept sections/navigation/colors unchanged.
 - 2026-10-18T11:51Z [CODE] Supplied Particles adapted for React 19 lint (settings ref updates in effect), Strict Mode (delete GPU resources without losing reusable canvas context), and reduced motion (stop continuous frames). Added Docker workflow and README guidance; set Turbopack root to repository to remove unrelated parent-lockfile warning.
 
 [DISCOVERIES]
+- 2026-10-18T14:08Z [TOOL] Resizing the viewport after landing entry changed runway height and reversed entry. landingTransition.tsx now preserves completed entry when runway height changes. Browser confirmed 1280x720 ->1440x900 ->768x1024 ->1024x600 ->375x812 stays entered.
+- 2026-10-18T14:08Z [TOOL] Docker engine remains unavailable. Sandboxed production compilation succeeded but TypeScript worker failed spawn EPERM; approved build outside sandbox passes. Playwright locator auto-centering of nav can reverse landing; native AX clicks verify actual navigation successfully (existing automation behavior).
 - 2026-10-18T11:48Z [TOOL] Docker engine unavailable. Existing Next.js dev server available at localhost:3000. Baseline main scrolls internally; body viewport 884px and main height 754px at browser test size.
 - 2026-10-18T11:51Z [TOOL] Initial TypeScript failure referenced deleted routes in stale .next/types/validator.ts; successful production build regenerated route types. Browser confirmed restored main height 754px. Programmatic locator focus centers controls and can reverse the transition; native keyboard navigation succeeds (Projects hash, main scroll 964px, window scroll 884px).
 
 [OUTCOMES]
+- 2026-10-18T14:08Z [TOOL] Responsive work complete. ESLint, standalone TypeScript, final production build (including TypeScript), and diff whitespace checks pass. Browser widths 320,375,768,1024,1280,1440 have no horizontal overflow; confirmed project/tool/contact navigation, mobile field sizing, tablet stacking, desktop sticky profile, short-window static profile, and resize entry preservation. No browser console warnings/errors. Preview saved in task visualization folder: responsive-mobile.jpg.
 - 2026-10-18T11:51Z [TOOL] Supersedes pending outcome: production build, ESLint, and TypeScript passed. Browser verified particles, intermediate blur/scale, complete reveal, focus transfer, Projects navigation, and reverse scroll; no console warnings/errors. Docker workflow was not executed because engine is stopped. Screenshot saved outside repo in task visualization folder as particle-landing.png.
 - 2026-10-18T11:53Z [USER] Hide the landing/document scrollbar while retaining the portfolio's internal scrollbar.
 - 2026-10-18T11:53Z [CODE] Scoped scrollbar hiding to html in app/globals.css, preserving document scrolling and the existing nested 8px scrollbar. README updated. Browser computed styles confirmed root scrollbar none, main scrollbar auto/8px; lint and production build passed.

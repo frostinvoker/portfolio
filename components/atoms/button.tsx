@@ -13,7 +13,7 @@ export default function Button({
         <button
             type={type}
             disabled={disabled}
-            className="bg-(--foreground) rounded-2xl p-2 text-(--h2altcolor) font-semibold hover:cursor-pointer" 
+            className="min-h-11 bg-(--foreground) rounded-2xl p-2 text-(--h2altcolor) font-semibold hover:cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--foreground)"
         >
             {children}
         </button>

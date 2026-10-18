@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/scrollReveal";
 
 export default function Page() {
   return (
-    <ScrollReveal className="w-full flex flex-col flex-1 gap-20">
+    <ScrollReveal className="w-full min-w-0 flex flex-col flex-1 gap-16 sm:gap-20">
       <Home />
       <Projects />
       <Tools />

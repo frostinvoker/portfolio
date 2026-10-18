@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function SocialsBar() {
     return(
-        <div className="w-full flex flex-row justify-center gap-3">
+        <div className="w-full flex flex-row flex-wrap justify-center gap-1 sm:gap-3">
             <Link href="https://www.linkedin.com/in/nicholas-gabriel-gonzales" className="p-1 hover:bg-(--iconhover) transition-colors duration-300 ease-in rounded-2xl">
                 <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M28.125 16.875C30.1141 16.875 32.0218 17.6956 33.4283 19.1562C34.8348 20.6168 35.625 22.5978 35.625 24.6635V33.75H30.625V24.6635C30.625 23.9749 30.3616 23.3146 29.8928 22.8277C29.4239 22.3408 28.788 22.0673 28.125 22.0673C27.462 22.0673 26.8261 22.3408 26.3572 22.8277C25.8884 23.3146 25.625 23.9749 25.625 24.6635V33.75H20.625V24.6635C20.625 22.5978 21.4152 20.6168 22.8217 19.1562C24.2282 17.6956 26.1359 16.875 28.125 16.875Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="#1797FF"/>

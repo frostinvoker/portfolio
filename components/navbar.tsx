@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <nav className=" bg-(--navbackground) flex flex-row justify-center gap-5 pl-15 pr-15 pt-1 pb-1 rounded-2xl">
+        <nav aria-label="Main navigation" className="bg-(--navbackground) max-w-full flex flex-row justify-center gap-2 sm:gap-5 px-3 sm:px-10 lg:px-15 py-1 rounded-2xl [&>a]:min-h-11 [&>a]:min-w-11 [&>a]:flex [&>a]:items-center [&>a]:justify-center [&>a:focus-visible]:outline-2 [&>a:focus-visible]:outline-(--foreground)">
             <Link href="#home" aria-label="Home" className="p-1 text-(--paltcolor) hover:bg-(--navhover) hover:text-(--naviconhover) transition-colors duration-300 ease-in rounded-2xl">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.75 11.25L15 2.5L26.25 11.25V25C26.25 25.663 25.9866 26.2989 25.5178 26.7678C25.0489 27.2366 24.413 27.5 23.75 27.5H6.25C5.58696 27.5 4.95107 27.2366 4.48223 26.7678C4.01339 26.2989 3.75 25.663 3.75 25V11.25Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" stroke="currentColor"/>

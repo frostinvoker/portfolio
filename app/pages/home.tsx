@@ -1,6 +1,6 @@
 export default function Home() {
     return(
-      <section id="home" className="min-h-dvh flex flex-col gap-5">
+      <section id="home" className="portfolio-section flex flex-col gap-5">
         <div data-scroll-reveal className="flex flex-col">
           <h1 className="text-(--h1color)">SOFTWARE</h1>
           <h1 className="text-(--h1altcolor)">DEVELOPER</h1>

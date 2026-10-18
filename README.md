@@ -24,11 +24,17 @@ This project uses `next/font` to load Raleway and Merriweather.
 
 `components/landingTransition.tsx` wraps the existing portfolio with the supplied React Bits `Particles` and `TextType` components. The headline **Hi, I'm Niko.** types once with a blue cursor, with **Scroll to explore** above the entry arrow. The landing screen uses the existing charcoal, white, gray, and blue palette. Scroll one viewport or activate **Scroll to explore** to zoom and blur into the portfolio. Scroll back to the top to reverse the transition.
 
-The portfolio retains its original layout and internal scrolling. The outer document scrollbar is hidden while scrolling remains enabled; the portfolio's internal scrollbar stays visible. Hidden portfolio controls are inactive until entry; the entry link supports keyboard navigation and transfers focus to the portfolio. Reduced-motion preferences replace the zoom/blur with a fade and static particles. Without JavaScript, the original portfolio is shown directly.
+The portfolio uses internal scrolling. The outer document scrollbar is hidden while scrolling remains enabled; the portfolio's internal scrollbar stays visible. Hidden portfolio controls are inactive until entry; the entry link supports keyboard navigation and transfers focus to the portfolio. Reduced-motion preferences replace the zoom/blur with a fade and static particles. Without JavaScript, the portfolio is shown directly.
 
 Adjust particle and typing settings in `components/landingTransition.tsx`; transition styles are scoped in `components/landingTransition.module.css`. The supplied components live in `components/Particles.tsx` / `Particles.css` and `components/TextType.tsx` / `TextType.css`. TextType uses GSAP for cursor animation and respects reduced-motion preferences. Browsers without WebGL2 still show the landing text and entry link.
 
 A 4px white loading bar sits at the top of the landing screen on a transparent track. `components/landingLoadingBar.tsx` tracks document and font readiness, fills the bar, then fades it away. The bar remains outside the zooming scene and respects reduced-motion preferences.
+
+## Responsive layout
+
+The portfolio fills the available viewport with navigation above a single internal scroll area. Below 1024px, the profile sits above the content; at 1024px and wider it sits alongside the content and remains visible while scrolling when the window is at least 704px tall. Shorter desktop windows let the profile scroll so all its links remain reachable. Resizing or rotating after entry keeps the portfolio open.
+
+Headings scale with the viewport. Projects stack images above descriptions below 640px and use rows on larger screens. Tool grids choose columns from the available content width, with icons that retain their proportions. Navigation has 44px touch targets, and contact fields fit narrow screens with 16px text and visible keyboard focus. Layout rules live in `app/layout.module.css`; section typography lives in `app/globals.css`.
 
 ## Portfolio scroll reveals
 

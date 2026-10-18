@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1{
   font-weight: bolder;
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 5.2vw, 4.5rem);
   line-height: 1;
 }
 h2{
@@ -59,7 +59,7 @@ h2{
   font-weight: 700;
 }
 h3{
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
   font-weight: bolder;
   color: var(--h1altcolor)
 }
@@ -71,6 +71,17 @@ label{
   color: var(--pcolor);
   font-family: var(--font-raleway), serif;
   font-weight: 600;
+}
+
+.portfolio-section {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 64rem) {
+  .portfolio-section {
+    min-height: 100dvh;
+  }
 }
 
 ::-webkit-scrollbar {

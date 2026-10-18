@@ -26,7 +26,7 @@ export default function Input({
                 type={type}
                 placeholder={placeholder}
                 required={required}
-                className="bg-(--inputbackground) rounded-2xl p-3 text-(--h2altcolor) focus:outline-hidden" 
+                className="w-full min-w-0 bg-(--inputbackground) rounded-2xl p-3 text-base text-(--h2altcolor) focus-visible:outline-2 focus-visible:outline-(--foreground)"
             />
         </div>
     );

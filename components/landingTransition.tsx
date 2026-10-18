@@ -29,11 +29,17 @@ export default function LandingTransition({ children }: { children: ReactNode })
 
     let frame = 0;
     let previousProgress = -1;
+    let previousDistance = runway.offsetHeight;
     root.dataset.enhanced = "true";
 
     const update = () => {
       frame = 0;
       const distance = runway.offsetHeight;
+      // Keep the portfolio entered when rotation or resizing changes the runway.
+      if (previousProgress >= 0.999 && distance !== previousDistance) {
+        window.scrollTo({ top: distance, behavior: "instant" });
+      }
+      previousDistance = distance;
       const progress = Math.min(1, Math.max(0, window.scrollY / Math.max(1, distance)));
       const eased = smoothstep(0, 1, progress);
       const complete = progress >= 0.999;
