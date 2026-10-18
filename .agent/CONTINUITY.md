@@ -1,0 +1,27 @@
+[PLANS]
+- 2026-10-18T11:48Z [USER] Add the supplied React Bits Particles as a landing screen; scrolling zooms and blurs into the existing portfolio. Preserve existing design and colors.
+
+[DECISIONS]
+- 2026-10-18T11:48Z [CODE] Keep existing portfolio sections and nested scroll area; wrap the layout with a client transition. Use existing CSS colors and fonts, native scrolling, and no new dependencies.
+
+[PROGRESS]
+- 2026-10-18T11:48Z [TOOL] Read supplied component and local Next.js 16.3.4 client-component/CSS guides. Copied supplied TSX and CSS into components/Particles.*.
+- 2026-10-18T11:51Z [CODE] Implemented landingTransition.tsx/CSS with one viewport of native scroll, reversible zoom/blur, keyboard entry/focus, inactive hidden controls, reduced-motion fade, and direct portfolio fallback without JavaScript. Moved original layout classes to a viewport shell; kept sections/navigation/colors unchanged.
+- 2026-10-18T11:51Z [CODE] Supplied Particles adapted for React 19 lint (settings ref updates in effect), Strict Mode (delete GPU resources without losing reusable canvas context), and reduced motion (stop continuous frames). Added Docker workflow and README guidance; set Turbopack root to repository to remove unrelated parent-lockfile warning.
+
+[DISCOVERIES]
+- 2026-10-18T11:48Z [TOOL] Docker engine unavailable. Existing Next.js dev server available at localhost:3000. Baseline main scrolls internally; body viewport 884px and main height 754px at browser test size.
+- 2026-10-18T11:51Z [TOOL] Initial TypeScript failure referenced deleted routes in stale .next/types/validator.ts; successful production build regenerated route types. Browser confirmed restored main height 754px. Programmatic locator focus centers controls and can reverse the transition; native keyboard navigation succeeds (Projects hash, main scroll 964px, window scroll 884px).
+
+[OUTCOMES]
+- 2026-10-18T11:51Z [TOOL] Supersedes pending outcome: production build, ESLint, and TypeScript passed. Browser verified particles, intermediate blur/scale, complete reveal, focus transfer, Projects navigation, and reverse scroll; no console warnings/errors. Docker workflow was not executed because engine is stopped. Screenshot saved outside repo in task visualization folder as particle-landing.png.
+- 2026-10-18T11:53Z [USER] Hide the landing/document scrollbar while retaining the portfolio's internal scrollbar.
+- 2026-10-18T11:53Z [CODE] Scoped scrollbar hiding to html in app/globals.css, preserving document scrolling and the existing nested 8px scrollbar. README updated. Browser computed styles confirmed root scrollbar none, main scrollbar auto/8px; lint and production build passed.
+- 2026-10-18T11:59Z [USER] Replace all landing copy with the supplied React Bits TextType showing exactly "Hi, I'm Niko.".
+- 2026-10-18T11:59Z [CODE] Added TextType.tsx/CSS and project dependency gsap 3.15.0 after install dry run. Greeting types once with existing Raleway/white and blue bar cursor. Removed previous headings, subtitle, and visible entry label; preserved accessible arrow link, particle field, transition, and scrollbar behavior. Adapted supplied component for React lint with useSyncExternalStore, deferred sentence changes, and JSX ref forwarding. README updated.
+- 2026-10-18T11:59Z [TOOL] ESLint, TypeScript, and final production build passed. Browser confirmed sole landing heading "Hi, I'm Niko.", no console warnings/errors, successful scroll entry/reversal, hidden root scrollbar and visible 8px main scrollbar.
+- 2026-10-18T12:02Z [USER] Add ease-in scroll transitions to elements rendered by app/page.tsx.
+- 2026-10-18T12:02Z [CODE] Added ScrollReveal client boundary and 38 explicit reveal targets across Home, Projects, Tools, Contacts, and contact form. Fade/upward motion uses 650ms ease-in and capped 75ms staggering; observer is rooted in main and waits for landing completion. Reveals run once, keyboard focus reveals immediately, and reduced-motion/no-JavaScript fallbacks keep content visible. README updated.
+- 2026-10-18T12:02Z [TOOL] Build, ESLint, TypeScript, and diff checks passed. Browser verified zero reveals before entry, home 4/4 after entry, project cards reveal progressively while off-screen cards stay pending, navigation reveals Contacts, Name field remains keyboard accessible, root scrollbar hidden and main scrollbar 8px. No console warnings/errors. Preview: scroll-reveal.png in task visualization folder.
+- 2026-10-18T12:07Z [USER] Restore the landing scroll text. [CODE] Re-added Scroll to explore above the arrow, with the visible label as its accessible name; README updated. [TOOL] ESLint, production build (including TypeScript), and diff checks passed.
+- 2026-10-18T12:15Z [USER] Add a 4px white loading bar at the landing screen top with a transparent background. [CODE] Added LandingLoadingBar tracking document/font readiness; fills then fades, outside zoomed scene, with reduced-motion support. README updated. [TOOL] Browser verified top 0px, height 4px, fill rgb(255,255,255), transparent track, progress 100 and hidden after completion, no console warnings/errors.

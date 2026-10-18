@@ -3,11 +3,11 @@ import Image from "next/image";
 export default function Projects(){
     return(
       <section id="projects" className="min-h-dvh flex flex-col gap-10">
-        <div className="flex flex-col">
+        <div data-scroll-reveal className="flex flex-col">
           <h1 className="text-(--h1color)">NOTABLE</h1>
           <h1 className="text-(--h1altcolor)">PROJECTS</h1>
         </div>
-        <div className="flex flex-col gap-5">
+        <div data-scroll-reveal className="flex flex-col gap-5">
           <div className="w-full h-48 flex flex-row gap-5">
             <div className="w-1/3 h-full bg-blue-500">
               <Image src="/projectsImgs/proj1.png" width={300} height={500} alt="Microjobs Image" className="block h-full w-full"/>
@@ -18,7 +18,7 @@ export default function Projects(){
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-5">
+        <div data-scroll-reveal className="flex flex-col gap-5">
           <div className="w-full h-48 flex flex-row gap-5">
             <div className="w-1/3 h-full bg-blue-500">
               <Image src="/projectsImgs/proj2.png" width={300} height={500} alt="Hospital Management System Image" className="block h-full w-full"/>
@@ -29,7 +29,7 @@ export default function Projects(){
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-5">
+        <div data-scroll-reveal className="flex flex-col gap-5">
           <div className="w-full h-48 flex flex-row gap-5">
             <div className="w-1/3 h-full bg-blue-500">
               <Image src="/projectsImgs/proj3.png" width={300} height={500} alt="Floodwatch Image" className="block h-full w-full"/>

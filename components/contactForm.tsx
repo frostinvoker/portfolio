@@ -4,7 +4,7 @@ import Button from "./atoms/button";
 
 export default function ContactForm() {
     return (
-        <form>
+        <form data-scroll-reveal>
             <div className="flex flex-col p-3 gap-3">
                 <Input 
                     id="name"

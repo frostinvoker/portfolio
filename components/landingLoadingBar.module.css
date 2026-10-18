@@ -1,0 +1,41 @@
+.track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transform-origin: left;
+  transition: transform 450ms ease;
+}
+
+.track[data-loaded="true"] {
+  animation: finish 200ms ease 450ms forwards;
+}
+
+@keyframes finish {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+  }
+
+  .track[data-loaded="true"] {
+    animation: none;
+    visibility: hidden;
+  }
+}

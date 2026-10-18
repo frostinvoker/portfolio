@@ -7,3 +7,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Container workflow
+
+- Build the development image: `docker build -t portfolio-dev .`
+- Run the site: `docker run --rm -p 3000:3000 portfolio-dev`
+- Verify: `docker run --rm portfolio-dev sh -c "npm run lint && npx tsc --noEmit && npm run build"`
+- If Docker's engine is unavailable, use the existing local dependencies without installing host packages. Keep build output separate from an active development server.

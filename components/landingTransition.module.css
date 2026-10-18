@@ -1,0 +1,137 @@
+.experience {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  overflow-anchor: none;
+}
+
+.runway,
+.landing {
+  display: none;
+}
+
+.portfolio {
+  position: relative;
+  outline: none;
+}
+
+.experience[data-enhanced="true"] .runway {
+  display: block;
+  height: 100svh;
+}
+
+.experience[data-enhanced="true"] .portfolio {
+  transform-origin: 50% 0;
+  transform: translateY(var(--reveal-offset, -100svh)) scale(var(--reveal-scale, 0.84));
+  filter: blur(var(--reveal-blur, 16px));
+  opacity: var(--reveal-opacity, 0);
+}
+
+.experience[data-enhanced="true"] .landing {
+  display: grid;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  background: var(--background);
+  opacity: var(--landing-opacity, 1);
+}
+
+.scene {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  transform: scale(var(--landing-scale, 1));
+  filter: blur(var(--landing-blur, 0px));
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+}
+
+.copy {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.title {
+  color: var(--h1color);
+  font-size: clamp(2rem, 7vw, 7rem);
+  line-height: 1.15;
+  letter-spacing: -0.055em;
+  white-space: nowrap;
+  min-height: 1.15em;
+}
+
+.explore {
+  position: absolute;
+  bottom: max(2.5rem, env(safe-area-inset-bottom));
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem;
+  transform: translateX(-50%);
+  color: var(--paltcolor);
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  transition: color 180ms;
+}
+
+.explore svg {
+  color: var(--foreground);
+}
+
+.explore:hover {
+  color: var(--foreground);
+}
+
+.explore:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.experience[data-entered="true"] .landing {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Restore the original viewport layout after the transition, including fixed descendants. */
+.experience[data-entered="true"] .portfolio {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience[data-enhanced="true"] .portfolio {
+    transform: translateY(var(--reveal-offset, -100svh));
+    filter: none;
+  }
+
+  .scene {
+    transform: none;
+    filter: none;
+  }
+
+  .explore {
+    transition: none;
+  }
+}
+
+@media (max-height: 480px) {
+  .title {
+    font-size: clamp(2.5rem, 14svh, 5rem);
+  }
+
+  .explore {
+    bottom: 0.75rem;
+    gap: 0.25rem;
+  }
+}
