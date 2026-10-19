@@ -44,25 +44,23 @@
   }
 }
 
-@media (min-width: 64rem) {
+@media (min-width: 48rem) {
   .header {
     margin-left: calc((100% - 2.5rem) / 3 + 2.5rem);
   }
 
   .main {
+    container-type: size;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 2.5rem;
   }
 
   .profile {
     justify-content: flex-end;
-  }
-}
-
-/* Short windows let the entire card scroll so its links remain reachable. */
-@media (min-width: 64rem) and (min-height: 44rem) {
-  .profile {
     position: sticky;
     top: 0;
+    /* Keep the card's links reachable even in short tablet/desktop windows. */
+    max-height: 100cqh;
+    overflow-y: auto;
   }
 }

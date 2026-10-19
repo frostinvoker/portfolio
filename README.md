@@ -32,7 +32,7 @@ A 4px white loading bar sits at the top of the landing screen on a transparent t
 
 ## Responsive layout
 
-The portfolio fills the available viewport with navigation above a single internal scroll area. Below 1024px, the profile sits above the content; at 1024px and wider it sits alongside the content and remains visible while scrolling when the window is at least 704px tall. Shorter desktop windows let the profile scroll so all its links remain reachable. Resizing or rotating after entry keeps the portfolio open.
+The portfolio fills the available viewport with navigation above a single internal scroll area. Below 768px, the profile sits above the content and scrolls with the page. At 768px and wider (tablet and desktop), it sits alongside the content and stays pinned while the content scrolls. In short windows, the card can scroll independently so all its links remain reachable. Resizing or rotating after entry keeps the portfolio open.
 
 Headings scale with the viewport. Projects stack images above descriptions below 640px and use rows on larger screens. Tool grids choose columns from the available content width, with icons that retain their proportions. Navigation has 44px touch targets, and contact fields fit narrow screens with 16px text and visible keyboard focus. Layout rules live in `app/layout.module.css`; section typography lives in `app/globals.css`.
 
