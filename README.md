@@ -42,6 +42,16 @@ Headings scale with the viewport. Projects stack images above descriptions below
 
 The observer follows the portfolio's internal `main` scroll area and starts after the landing transition completes. Each element reveals once, including when reached through navigation links. Keyboard focus reveals controls immediately. Reduced-motion preferences, unavailable IntersectionObserver, and disabled JavaScript leave content visible without animation. Timing and motion are defined in `components/scrollReveal.module.css`.
 
+## Contact form feedback
+
+`components/contactForm.tsx` calls `sendContactMessage` from `lib/contact.ts`, which submits JSON directly from the browser to Web3Forms. This supports the Web3Forms free plan; no `/api/contact` server proxy is used. Keep request logic in this helper and interaction feedback in the component.
+
+Set `NEXT_PUBLIC_WEB3FORMS_KEY=YOUR_WEB3FORMS_ACCESS_KEY` in a root `.env` or `.env.local` file. This replaces the previous server-only `accessKey` name. Restart development after environment changes, and set this variable before production builds because Next.js embeds public variables at build time. Web3Forms access keys are designed to be public; this prefix exposes this specific key to the browser. The helper handles missing configuration, unsuccessful or non-JSON responses, and network errors without clearing form values.
+
+The submit button stays full width and 44px tall in every state: blue with its normal label when idle, a centered 20px spinner while sending, a checkmark and "Message sent!" on `--successcolor`, or an X and "Couldn't send. Try again." on `--errorcolor`. Success uses dark text for contrast. Colors transition over 300ms with ease-in timing. Submission is disabled while sending; success clears the form, and errors retain the entered fields for retry. A visually hidden live region announces feedback. Reduced-motion settings stop the spinner animation and color transition.
+
+`components/atoms/button.tsx` forwards native button props so the form can provide styling and accessibility attributes. Verify feedback by mocking the Web3Forms endpoint to avoid sending real messages. Server-side Web3Forms delivery requires a paid plan and IP approval; the browser helper avoids that requirement.
+
 ## Container workflow
 
 With Docker running:
